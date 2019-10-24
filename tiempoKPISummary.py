@@ -38,7 +38,7 @@ import threading
 #options.add_argument('--no-sandbox') 
 #options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome()
-url = 'https://130.162.115.46/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FSelf%20Service%2FKPI%2FDashboard%20-%20KPI&page=KPI%20Summary'
+url = 'https://130.162.102.240/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FSelf%20Service%2FKPI%2FDashboard%20-%20KPI&page=KPI%20Summary'
 driver.get(url)
 
 
@@ -98,7 +98,7 @@ def anadirXpathOculto(xpathaux, nombre):
 
 
 
-timeout=100
+timeout=300
 espera('//button[@id="btn_login"]')
 
 xpath = '//input[@id="idUser"]'
@@ -107,7 +107,7 @@ obj.send_keys('Admin')
 
 xpath = '//input[@id="idPassword"]'
 obj = driver.find_element_by_xpath(xpath)
-obj.send_keys('W3lcoMe1_#19')
+obj.send_keys('oacdev23')
 
 xpath = '//button[@id="btn_login"]'
 obj = driver.find_element_by_xpath(xpath)
@@ -132,15 +132,15 @@ espera(xpath)
 obj = driver.find_element_by_xpath(xpath)
 obj.click()
 
-try:
-    WebDriverWait(driver, 3).until(EC.alert_is_present(),
-                                   'Timed out waiting for PA creation ' +
-                                   'confirmation popup to appear.')
-    alert = driver.switch_to.alert
-    alert.accept()
-    print("alert accepted")
-except TimeoutException:
-    print("no alert")
+#try:
+#    WebDriverWait(driver, 3).until(EC.alert_is_present(),
+#                                   'Timed out waiting for PA creation ' +
+#                                   'confirmation popup to appear.')
+#    alert = driver.switch_to.alert
+#    alert.accept()
+#    print("alert accepted")
+#except TimeoutException:
+#    print("no alert")
 
 print('Esperando Menu Desplegable')
 menu_desplegable=sys.argv[1]
@@ -207,8 +207,8 @@ obj.click()
 entra = time.time()
 
 xpath = '//table[@id="d:dashboard~p:gpc6emakp5nqqk1b~r:sarsto1o6spo2pldLinks"]'
-anadirXpathOculto(xpath, "Report - KPI Summary Last 13: ")
+anadirXpath(xpath, "Report - KPI Summary Last 13: ")
 
-xpath = '//div[@id="d:dashboard~p:gpc6emakp5nqqk1b~r:sarsto1o6spo2pldNavDone"]/div[@class="ProgressIndicatorDiv"]'
-anadirXpathOculto(xpath, "Report - KPI Summary Last 13: ")
+#xpath = '//div[@id="d:dashboard~p:gpc6emakp5nqqk1b~r:sarsto1o6spo2pldNavDone"]/div[@class="ProgressIndicatorDiv"]'
+#anadirXpathOculto(xpath, "Report - KPI Summary Last 13: ")
 

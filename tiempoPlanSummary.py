@@ -122,7 +122,7 @@ def carga():
 
 
 
-timeout=100
+timeout=300
 espera('//button[@id="btn_login"]')
 
 xpath = '//input[@id="idUser"]'
@@ -155,15 +155,15 @@ espera(xpath)
 obj = driver.find_element_by_xpath(xpath)
 obj.click()
 
-#try:
-    #WebDriverWait(driver, 3).until(EC.alert_is_present(),
-    #                               'Timed out waiting for PA creation ' +
-    #                               'confirmation popup to appear.')
-    #alert = driver.switch_to.alert
-    #alert.accept()
-    #print("alert accepted")
-#except TimeoutException:
-    #print("no alert")
+try:
+    WebDriverWait(driver, 3).until(EC.alert_is_present(),
+                                   'Timed out waiting for PA creation ' +
+                                   'confirmation popup to appear.')
+    alert = driver.switch_to.alert
+    alert.accept()
+    print("alert accepted")
+except TimeoutException:
+    print("no alert")
 
 print('Esperando Menu Desplegable')
 menu_desplegable=sys.argv[1]
@@ -178,9 +178,10 @@ espera(xpath)
 obj = driver.find_element_by_xpath(xpath)
 obj.click()
 
+
 print('Esperando Menu Dinamico')
 menu_click=sys.argv[2]
-if (menu_click is '(Todos los Valores de Columna)'):
+if (menu_click is 'Todos los Valores de Columna'):
   menu_click = "*)nqgtac(*"
 print(menu_click)
 xpath='//input[@value="' + menu_click + '"]'
@@ -221,11 +222,10 @@ if len(sys.argv)>=4:
 #obj = driver.find_element_by_xpath(xpath)
 #obj.click()
 
-print('Click en apply')
-xpath = '//input[@id="gobtn"]'
-espera(xpath)
-obj = driver.find_element_by_xpath(xpath)
-obj.click()
+xpathClick = driver.find_element_by_xpath(By.XPATH, "Embedd:dashboard~p:62qm6i1ctovm0jbc~s:1ifc3beakhor6t6s")
+xpath.click()
+#Actions builder = new Actions(driver)
+#Action clickfuera = builder.
 
 entra = time.time()
 
